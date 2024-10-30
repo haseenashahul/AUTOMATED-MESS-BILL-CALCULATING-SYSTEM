@@ -1,0 +1,125 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block table %}
+
+<div class="container mt-5">
+<div class='mt-5 pt-5'> <button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewbill">Generate Bill</button></div>
+    <!-- Student Details Section -->
+    <form action="" method="POST" class='mt-5 pt-5'>
+        {% csrf_token %}
+        <!-- Hostel Bill Settings Section -->
+        <h3 class="mt-5">HOSTEL FEE SETTINGS</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="rent" class="form-label">Rent Amount</label>
+                    <input type="number" class="form-control" id="rent" name="rent" value="{{ settings.rent }}" placeholder="Enter rent amount" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fixed_charge" class="form-label">Fixed Charge per Day</label>
+                    <input type="number" class="form-control" id="fixed_charge" name="perDay_fixedCharge" value="{{ settings.perDay_fixedCharge }}" placeholder="Enter fixed charge per day" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="electricity" class="form-label">Electricity Charge</label>
+                    <input type="number" class="form-control" id="electricity" name="electricity" value="{{ settings.electricity }}" placeholder="Enter electricity charge" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="maintenance" class="form-label">Maintenance Charge</label>
+                    <input type="number" class="form-control" id="maintenance" name="maintenance" value="{{ settings.maintenance }}" placeholder="Enter maintenance charge" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="wifi" class="form-label">Wi-Fi Charge</label>
+                    <input type="number" class="form-control" id="wifi" name="broadband" value="{{ settings.broadband }}"  placeholder="Enter Wi-Fi charge" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="emp_salary" class="form-label">Employee Salary</label>
+                    <input type="number" class="form-control" id="emp_salary" name="emp_salary" value="{{ settings.emp_salary }}"  placeholder="Enter Employee salary" required>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group text-center mt-4">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="modal modal-small-width fade" id="viewbill" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Generate Bill</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img src="{% static 'img/modal-close.svg' %}" alt=""></button>
+        </div>
+        <div class="modal-body modal-form">
+          <form action="{% url 'generate_bill' %}" method='POST'>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="month" class="form-label">Month</label>
+                        <select class="form-select" id="month" name="month" required>
+                            <option value="" disabled selected>Select Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="year" class="form-label">Year</label>
+                        <select class="form-control" id="year" name="year" required>
+                            <option value="">Select Year</option>
+                            {% for year in year_range %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Generate</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+{% endblock %}

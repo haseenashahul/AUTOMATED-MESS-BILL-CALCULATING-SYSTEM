@@ -1,0 +1,223 @@
+
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block table %}
+<div class="db-rt-outer">
+    <div class="db-rt-cont-area">
+        <div class="top-panel-wrp">
+            <div class="title">MESS FEE</div>
+            {% comment %} <div class="rt-cta-wrp">
+                <button class="actn-btns btn">
+                    <img src="img/search-icon-top.svg" alt="">
+                </button>
+                <button class="actn-btns btn">
+                    <img src="img/calendar-icon-top.svg" alt="">
+                </button>
+                <button class="radius-long btn" type="button" data-bs-toggle="modal" data-bs-target="#addWebsite">
+                    <span class="icon"><img src="img/btn-plus-icon.svg" alt=""></span>
+                    <span class="txt">Add Website</span>
+                </button>
+            </div> {% endcomment %}
+        </div>
+        <div class="common-table-wrp">
+            <div class="table-responsive">
+                <table class="table common-table-listing">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="client">MONTH</th>
+                            <th scope="col" class="title">TOTAL</th>
+                            <th scope="col" class="link">ELECTRICITY</th>
+                            <th scope="col" class="phone">WIFI</th>
+                            <th scope="col" class="mail">MAINTENANCE</th>
+                            <th scope="col" class="mail">STATUS</th>
+                            <th scope="col" class="mail">DUE</th>
+                            <th scope="col" class="date"> GRAND TOTAL</th>
+                            <th scope="col" class="date"> PAID AMOUNT</th>
+                            <th scope="col" class="action">ACTION</th>
+                          </tr>
+                    </thead>
+                    <tbody>
+                        {% for bill in bills %}
+                        <tr>
+                            <td>{{ bill.billing_month|date:"F Y" }}</td>
+                            <td>{{ bill.total }}</td>
+                            <td>{{ bill.electricity }}</td>
+                            <td>{{ bill.broadband }}</td>
+                            <td>{{ bill.maintenence }}</td>
+                            <td>{{ bill.status }}</td>
+                            <td>{{ bill.due }}</td>
+                            <td>{{ bill.total_amount }}</td>
+                            <td>{{ bill.paid_amount }}</td>
+                            <td>
+                                <div class="action-btns-blk">
+                                    <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#viewuser{{bill.id}}'>
+                                        <img src="{% static 'img/eye.svg' %}" alt="">
+                                    </a>
+                                    {% if bill.status not in  "paid" %}
+                                    <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#accept{{bill.id}}'>
+                                        <img src="{% static 'img/accept.png' %}" alt="">
+                                    </a>
+                                    {% endif %}
+                                    {% comment %} <a  class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#reject{{user.id}}'>
+                                        <img src="{% static 'img/decline.png' %}" alt="">
+                                    </a> {% endcomment %}
+                                </div>
+                            </td>
+
+
+
+                            <div class="modal modal-small-width fade" id="viewuser{{bill.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="staticBackdropLabel">MESS FEE DETAILS</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img src="{% static 'img/modal-close.svg' %}" alt=""></button>
+                                    </div>
+                                    <div class="modal-body modal-form">
+                                      <form action="">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="view-blk">
+                                                    {% comment %} <div class="icon-blk">
+                                                        <img src="{% static 'img/website-title-icon.svg' %}" alt="">
+                                                    </div> {% endcomment %}
+                                                    <div class="dtls">
+                                                        <div class="title">GRAND TOTAL :  {{ bill.total_amount }}</div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/client-name.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">TOTAL</div>
+                                                        <div class="desc">{{ bill.total}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/client-name.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">ELECTRICITY</div>
+                                                        <div class="desc">{{ bill.electricity }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/client-name.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">WIFI</div>
+                                                        <div class="desc">{{ bill.broadband}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/client-name.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">MAINTENANCE</div>
+                                                        <div class="desc">{{ bill.maintenence}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+                        
+                                <div class="modal fade" id="accept{{ bill.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <form method="POST" action="{% url 'pay_bill' bill.id %}">
+                                            {% csrf_token %}
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Pay Bill</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Do you want to pay for {{ bill.billing_month|date:"F Y" }}?</p>
+                                
+                                                    <!-- Transaction ID Input -->
+                                                    <div class="mb-3">
+                                                        <label for="transactionId" class="form-label">Transaction ID</label>
+                                                        <input type="text" class="form-control" name="transaction_id" placeholder="Enter Transaction ID" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="amount" class="form-label">Amount</label>
+                                                        <input type="number" class="form-control" name="amount" placeholder="Enter Amount" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-success">PAY</button> <!-- Changed from <a> to <button> -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                        
+
+                                  
+                        
+                        
+                            </tr>
+
+                      
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="pagination-wrp">
+            <div class="sort">
+                Show
+                <select class="page-sort form-select" name="" id="">
+                    <option value="">10</option>
+                    <option value="">50</option>
+                    <option value="">100</option>
+                </select>
+                Entries
+            </div>
+            <div class="page-navigate">
+                <a href="#" class="arrow-nav prev"><img src="img/pagination-arrow.svg" alt=""></a>
+                <a href="#" class="counts active">1</a>
+                <a href="#" class="counts">2</a>
+                <a href="#" class="counts">3</a>
+                <a href="#" class="counts">4</a>
+                <a href="#" class="counts">5</a>
+                <a href="#" class="arrow-nav next"><img src="img/pagination-arrow.svg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+

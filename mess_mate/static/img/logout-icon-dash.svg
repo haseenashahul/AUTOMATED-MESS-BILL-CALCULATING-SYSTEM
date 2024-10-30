@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="vuesax_bold_keyboard" data-name="vuesax/bold/keyboard" transform="translate(-296 -318)">
+    <g id="keyboard">
+      <g id="shutdown-icon" transform="translate(298.819 320.819)">
+        <path id="Path_15111" data-name="Path 15111" d="M9.181,0A9.181,9.181,0,1,1,0,9.181,9.182,9.182,0,0,1,9.181,0Z" fill="#e2ffd8" fill-rule="evenodd"/>
+        <path id="Path_15112" data-name="Path 15112" d="M33.264,37.21a.959.959,0,0,1,1.45-1.255,5.418,5.418,0,1,1-8.238.052.958.958,0,1,1,1.466,1.233,3.5,3.5,0,1,0,5.323-.03Z" transform="translate(-21.434 -30.3)" fill="#34ca00" fill-rule="evenodd"/>
+        <path id="Path_15113" data-name="Path 15113" d="M56.925,27.32a.962.962,0,1,1-1.925,0V24.452a.962.962,0,0,1,1.925,0V27.32Z" transform="translate(-46.781 -19.98)" fill="#34ca00" fill-rule="evenodd"/>
+      </g>
+      <path id="Vector" d="M0,0H24V24H0Z" transform="translate(320 342) rotate(180)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

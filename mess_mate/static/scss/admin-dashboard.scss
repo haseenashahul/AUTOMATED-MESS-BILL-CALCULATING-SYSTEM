@@ -1,0 +1,231 @@
+@import "partials/partials";
+
+.db-rt-outer{
+    &.dashboard{
+        .db-rt-cont-area{
+            border: none;
+        }
+    }
+} 
+.db-cont{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-feature-settings: 'lnum' 1;
+    @media ($sm-1199){
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .card{
+        padding: 36px;
+        border-radius: 22px;
+        border: none;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @media ($sm-1679){
+            padding: 28px;
+            border-radius: 18px;
+        }
+        @media ($sm-1441){
+            padding: 22px; 
+            border-radius: 14px;
+        }
+        @media ($sm-1199){
+            padding: 16px;
+            border-radius: 12px; 
+        }
+        .card-title{
+            display: flex;
+            align-items: center;
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-bottom: 30px;
+            .title-wrp{
+                display: flex;
+                align-items: center;
+                font-size: 18px;
+                font-weight: bold;
+                color: var(--txtColor);
+                line-height: 1;
+                margin-bottom: 0;
+                flex: 1;
+                @media ($sm-1679){
+                    font-size: 16px;
+                }
+                @media ($sm-1441){
+                    font-size: 14px;
+                }
+                
+                .ico{
+                    width: 42px;
+                    height: 42px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: var(--navBg);
+                    border-radius: 40px;
+                    color: var(--colorPrimary);
+                    svg{
+                        width: 50%;
+                    }
+                }
+                .txt{
+                    margin-left: 16px;
+                }
+            }
+            .form-group{
+                flex: 1 0 40%;
+                max-width: 180px;
+            }
+        }
+
+        .card-conts{
+            flex: 1 0 100%;
+        }
+    }
+}
+
+.db-intro{
+    & > .row{
+        @media($sm-1199){
+            gap: 15px;
+        } 
+    }
+    .card-monitor{
+        background: transparent linear-gradient(180deg, var(--selectedBG) 0%, var(--colorPrLight) 100%) 0% 0% no-repeat padding-box;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @media($sm-767){
+            margin-bottom: 20px;
+        }
+        .txt-col{
+            flex: 1;
+        }
+        .img-col{
+            flex: 0 0 43%;
+            @media($sm-579){
+                display: none;
+            }
+        }
+        .welcome{
+            font-size: 13px;
+            color: var(--txtLight);
+        }
+        .title{
+            font-size: 20px;
+            color: var(--txtColor);
+            font-weight: 700;
+            margin-bottom: 14px;
+            @media ($sm-1679){
+                font-size:18px;
+            }
+            @media ($sm-1441){
+                font-size: 16px;     
+            }
+             
+        }
+        .counts{
+            display: flex;
+            align-items: center;
+            color: var(--txtLight);
+            padding-top: 14px;
+            line-height: 1;
+            .txt{
+                font-size: 13px;
+                padding-left: 6px;
+                padding-right: 6px;
+                
+                @media ($sm-1441){
+                    font-size: 12px;     
+                }
+            }
+            .count{
+                font-size: 20px;
+                font-family: 'Poppins', sans-serif;
+                color: var(--txtColor);
+                font-weight: 600;
+                @media ($sm-1679){
+                    font-size:18px;
+                }
+                @media ($sm-1441){
+                    font-size: 16px;     
+                }
+            }
+            .ico{
+                color: var(--colorPrimary);
+            }
+        }
+    }
+
+    .card-view{
+        background-image: url(../img/view-card-bg.svg);
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: contain;
+        .txt-col{
+            flex: 1;
+            .title{
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 0;
+                @media ($sm-1679){
+                    font-size:20px;
+                }
+                @media ($sm-1441){
+                    font-size: 18px;     
+                }
+            }
+            .url{
+                color: var(--txtLight);
+            }
+        }
+        .img-col{
+            flex: 0 0 43%;
+            img{
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .user-info{
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+            .logo-col{
+                width: 34px;
+                height: 34px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #CDF0C1;
+                border-radius: 34px;
+                img{
+                    width: 50%;
+                    object-fit: contain;
+                }
+            }
+            .name-col{
+                padding-left: 8px;
+                .name{
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: var(--txtColor);
+                    margin-bottom: 0;
+                    line-height: 1.1;
+                    @media ($sm-1679){
+                        font-size: 14px;
+                    }
+                    @media ($sm-1441){
+                        font-size: 13px;     
+                    }
+                }
+                .desig{
+                    font-size: 12px;
+                    color: var(--txtColor);
+                }
+            }
+        }
+    }
+}

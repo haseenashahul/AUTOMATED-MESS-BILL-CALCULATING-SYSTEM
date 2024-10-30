@@ -1,0 +1,227 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block style %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<link rel="stylesheet" href="{% static 'css/common.css' %}">
+<link rel="stylesheet" href="{% static 'css/header-sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/common-table-listing.css' %}">
+<link rel="stylesheet" href="{% static 'css/common-modal.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<script>
+    // Wait for the DOM to fully load
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the current URL path
+        var currentPath = window.location.pathname;
+
+        // Get all navigation links
+        var navLinks = document.querySelectorAll('.nav-link');
+
+        // Loop through the links and add the 'active' class to the one that matches the current URL
+        navLinks.forEach(function(link) {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+<div class="outer-main">
+    <div class="left-side-nav" id="sidebar">
+        <div class="main-nav" style='padding-right:15px;padding-left:6px;'>
+            <div class="nav-title">
+                MAIN MENU
+            </div>
+            <style>
+                .fSize {
+                    font-size: 12px;
+                }
+            </style>
+           
+            {% if profile.is_superuser %}
+            <ul class="menu-ul" style="padding-right: 15px;padding-left: 5px;">
+
+                <li>
+                    <a  href="{% url 'warden-dashboard' %}" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-gauge"></i></span>
+                        <span class="nav-txt">Dasboard</span>
+                    </a>
+                </li> 
+
+                <li class="nav-item">
+                    <a  href="{% url 'active_students' %}" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-user-graduate "></i></span>
+                        <span class="nav-txt ">Students</span>
+                    </a>
+                </li>
+            <li class="nav-item">
+                <a href="{% url 'registered-students' %}" class="nav-link" aria-current="page">
+                <span class="nav-icon"><i class="fas fa-user-check"></i></span>
+                <span class="nav-txt fSize" >Registered Students</span>
+                </a>
+            </li>
+           
+            <li>
+                <a href="{% url 'past_students' %}" class="nav-link" >
+                    <span class="nav-icon"><i class="fas fa-user-times"></i></span>
+                    <span class="nav-txt">Vacated Students</span>
+                </a>
+              
+            </li>
+
+            <li class="nav-item">
+                <a href="{% url 'leave_applications' %}" class="nav-link" aria-current="page">
+                <span class="nav-icon"><i class="fas fa-calendar-check"></i></span>
+                <span class="nav-txt" >Student Leave</span>
+                </a>
+            </li>
+            
+            {% comment %} <li class="nav-item">
+                <a href="{% url 'employee_list' %}" class="nav-link" aria-current="page">
+                <span class="nav-icon"><i class="fas fa-user-tie"></i></span>
+                <span class="nav-txt" >Employee</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{% url 'add_employee_leave' %}" class="nav-link" aria-current="page">
+                <span class="nav-icon"><i class="fas fa-user-clock"></i></span>
+                <span class="nav-txt" >Employee Leave</span>
+                </a>
+            </li> {% endcomment %}
+
+            <li class="nav-item">
+                <a href="{% url 'expenditure_list' %}" class="nav-link" aria-current="page">
+                <span class="nav-icon"><i class="fas fa-file-invoice"></i></span>
+                <span class="nav-txt" >Expenditure Details</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{% url 'hostel_bill_settings' %}" class="nav-link" aria-current="page">
+                <span class="nav-icon"><i class="fas fa-sliders-h"></i></span>
+                <span class="nav-txt fSize" >Hostel fee Settings</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'list_bills' %}" class="nav-link" >
+                    <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
+                    <span class="nav-txt">Mess Fee</span>
+                </a>
+              
+            </li>
+            </ul>
+
+            {% else %}
+            <ul class="menu-ul">
+
+                <li>
+                    <a  href="{% url 'student-dashboard' %}" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-gauge"></i></span>
+                        <span class="nav-txt">Dasboard</span>
+                    </a>
+                </li>
+            <li class="nav-item">
+                <a href="{% url 'leave_applications' %}" class="nav-link" aria-current="page">
+                <span class="nav-icon"><i class="fas fa-user-clock"></i></span>
+                <span class="nav-txt" >Leave</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="{% url 'list_bills' %}" class="nav-link" >
+                    <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
+                    <span class="nav-txt">Fees</span>
+                </a>
+              
+            </li>
+
+            <li>
+                <a href="{% url 'profile' %}" class="nav-link" >
+                    <span class="nav-icon"><i class="fas fa-user"></i></span>
+                    <span class="nav-txt">Profile</span>
+                </a>
+              
+            </li>
+            </ul>
+
+
+            {% endif %}
+        </div>
+        <div class="log-action-blk" style="margin-top: 7px;">
+          <a href="{% url 'logout' %}" class="log-wrp">
+            <span class="log-icon"><img src="{% static 'img/logout-icon-dash.svg' %}" alt=""></span>
+            <span class="log-status">Log out</span>
+          </a>
+        </div>
+    </div>
+    <div class="right-panel" id="rightPanel">
+        <div class="top-nav">
+            
+            <div class="inner-wrp">
+                <div class="left-sec">
+                    <a href="/" class="navbar-brand">
+                        <img src="{% static 'img/mess.png' %}" style="height: 24px;max-width: unset;width: 150px;" alt="">
+                    </a>
+                    <a href="/" class="navbar-brand small">
+                        <img src="img/logo-sm.png" alt="">
+                    </a>
+                    <span class="navigation-icon toggle">
+                        <img src="{% static 'img/arrow-left-side-nav.svg' %}" style="margin-left: 5px;margin-right:15px" alt="">
+                    </span>
+                </div>
+               
+                {% block header %}{% endblock %}
+              
+                <div class="profile-info-rt">
+                    <div class="prof-img-wrp">
+                        <img src="{% static 'img/profile-user-img.png' %}" alt="User Image" class="prof-img">
+                    </div>
+                    <div class="prf-dtl">
+                       
+                        <span class="prof-name">{{profile.first_name}} {{profile.last_name}}</span>
+                        {% comment %} <h5 class="prof-desg">Seo Marketing</h5> {% endcomment %}
+                       
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        {% block table %}{% endblock %}
+
+
+
+
+{% comment %} {% block modal %}{% endblock %} {% endcomment %}
+<!-- Modal -->    </div>
+</div>
+
+<!-- Modal -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var btn = document.querySelector('.toggle');
+    var btnst = true;
+    btn.onclick = function() {
+    if(btnst == true) {
+        document.getElementById('sidebar').classList.add('sidebarshow');
+        document.getElementById('rightPanel').classList.add('expand');
+        btnst = false;
+    }else if(btnst == false) {
+        document.getElementById('sidebar').classList.remove('sidebarshow');
+        document.getElementById('rightPanel').classList.remove('expand')
+        btnst = true;
+    }
+    }
+</script>
+
+{% endblock %}

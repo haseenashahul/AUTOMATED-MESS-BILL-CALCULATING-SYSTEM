@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="vuesax_bold_keyboard" data-name="vuesax/bold/keyboard" transform="translate(-296 -318)">
+    <g id="keyboard">
+      <path id="Vector" d="M16.52.1A11.986,11.986,0,0,0,14.75,0h-9A13.109,13.109,0,0,0,4.01.09C.66.46,0,2.45,0,5.75v6c0,3.3.66,5.29,3.98,5.65a11.986,11.986,0,0,0,1.77.1h9a13.109,13.109,0,0,0,1.74-.09c3.35-.37,4.01-2.35,4.01-5.66v-6C20.5,2.45,19.84.46,16.52.1ZM8.34,5.75a1,1,0,1,1-.99,1A.994.994,0,0,1,8.34,5.75Zm-3,0a1,1,0,1,1-.99,1A1,1,0,0,1,5.34,5.75ZM15.25,13H5.27a.764.764,0,0,1-.76-.75.747.747,0,0,1,.74-.75h10a.75.75,0,0,1,0,1.5Zm0-5.5h-3.5a.75.75,0,0,1,0-1.5h3.5a.75.75,0,0,1,0,1.5Z" transform="translate(297.75 321.25)" fill="#656565"/>
+      <path id="Vector-2" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(320 342) rotate(180)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

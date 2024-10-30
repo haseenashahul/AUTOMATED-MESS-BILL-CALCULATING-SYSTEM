@@ -1,0 +1,94 @@
+// Brand colors
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+:root{
+    --colorPrimary: #34CA00;
+    --colorPrHover: #2cb100;
+    --colorPrLight: #CCFFBB;
+    --colorSecondary: #C3DEB9;
+    --colorSecLight: #CEFFBD;
+    --selectedBG: #E5FFDC;
+
+    --txtColor: #000000;
+
+    --txtLight: #4A5B44;
+
+    --btnSecColor: #264919;
+
+    --borderLight: #CCDFC5;
+
+    --db-outr-brdr: #E6F1E2;
+    --bgWhite: #fff;
+    --dbRtBg: #F4F9F2;
+    --titleWrpBoxShadow:#0000000A;
+    --eclipseBorder: #DFEFD9;
+    --txtWhite: #fff;
+    --tableHeaderBg: #EBFFE4;
+    --tableThTxt: #1D1E40;
+    --tableRowBorder: #DFEFD9;
+    --selectBorder:#D9D9D9;
+    --formLabelColor: #4A5A44;
+
+    --planCardBorder: #E1F0DB;
+    --sideNavTxt:#656565;
+    --logoutBorder:#B9CEB2;
+    --navBg:#E0FFD3;
+    --hdrBorder:#E2ECDD;
+
+    --cardBorder: #74DD4F;
+    --pricingCardHead: #E3FFD980;
+    --btnLight: #E4F9DD;
+    --accordianBorder: #ACFC90;
+    --txtWhite: #fff;
+    --cancelSub:#EFA4A4;
+    --redHover:#c81010;
+    --uploadBg: #F5FFF2;
+    --expired:#FF6A6A;
+    --used:#FFC43A;
+
+    --copyBorder: #D2E9C9;
+    --imgBoxShadow: #2D392926;
+
+    --formBorder: #AEE59B;
+    --tabShadow: #34CA0026;
+
+} 
+
+
+
+// Font stack
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+$font-primary: 'Raleway', serif; 
+$font-secondary: 'Poppins', sans-serif;
+
+// The base body size
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+$body-font-size: 14px !default;
+
+
+// Breakpoints
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+$lg-320    	: "min-width: 320px";
+$lg-480   	: "min-width: 480px";
+$lg-768    	: "min-width: 768px";
+$lg-992   	: "min-width: 992px";
+$lg-1024   	: "min-width: 1024px";
+$lg-1200 	: "min-width: 1200px";
+$lg-1442 	: "min-width: 1442px";
+$lg-1680 	: "min-width: 1680px";
+
+$sm-479   	: "max-width: 479px";  /*** all Mobile Screen (iphone 6,7,8) ***/
+$sm-579   	: "max-width: 579px";  
+$sm-767     : "max-width: 767px";  /*** mobile Landscape Size ***/
+$sm-991     : "max-width: 991px";  /*** medium devices (tablets, less than 992px) ***/
+$sm-1023   	: "max-width: 1023px"; /*** iPad in landscape ***/
+$sm-1199 	: "max-width: 1199px"; /**** smaller than desktop 1200 (devices and browsers) ***/
+$sm-1281 	: "max-width: 1281px"; /*** laptop with MDPI (medium density per inch) resolution ***/
+$sm-1367 	: "max-width: 1367px"; /*** SP developers resolution ***/
+$sm-1441 	: "max-width: 1441px"; /*** laptop with HiDPI (High Dots Per Inch) resolution ***/
+$sm-1679 	: "max-width: 1679px"; /*** WSXGA (Wide Super Extended Graphics Array) resolution ***/
+
+
+
+
+

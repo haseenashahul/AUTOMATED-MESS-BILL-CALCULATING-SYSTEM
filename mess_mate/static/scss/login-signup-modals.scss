@@ -1,0 +1,177 @@
+@import "partials/partials";
+
+ 
+.modal-subscribe-success{
+    .plan-head{
+        padding: 20px;
+        background-color: var(--tableHeaderBg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 24px;
+        position: relative;
+        @media ($sm-1679){
+            padding: 16px;
+            border-radius: 20px;
+        }
+        @media ($sm-1441){
+            border-radius: 18px;
+        }
+         
+        .plan-badge{
+            position: absolute;
+            bottom: 0;
+            transform: translateY(50%);
+            background-color: var(--colorPrimary);
+            color: #ffffff;
+            padding: 5px 12px 5px 5px;
+            border-radius: 20px;
+            font-weight: 400;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+            .txt{
+                margin-left: 5px;
+            }
+            .ico{
+                img{
+                    max-width: 12px;
+                    object-fit: contain;
+                }
+            }
+        }
+        .plan-titles{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .ico{
+                max-width: 60px;
+                img{
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+        } 
+        .service{
+            font-size: 14px;
+            color: var(--txtColor);
+            font-weight: 600;
+        }
+        .rate{
+            font-size: 34px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1;
+            @media ($sm-1679){
+                font-size: 30px;
+            }
+            @media ($sm-1441){
+                font-size: 24px;  
+            }
+            @media ($sm-1199){
+                font-size: 20px;   
+            }
+            .billcycle{
+                font-size: 0.53em;
+                font-weight: 600;
+                color: var(--colorPrimary);
+            }
+        }
+    } 
+    .modal-content{
+        background-image: url(../img/successmodalBg.svg);
+        background-repeat: no-repeat;
+        background-position: top left;
+    }
+    .success-ico{ 
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+            max-width: 180px;
+            @media ($sm-1679){
+                max-width: 160px;
+            }
+            @media ($sm-1441){
+                max-width: 140px;  
+            }
+            @media ($sm-1199){
+                 
+            }
+        }
+    }
+    .modal-title,
+    .modal-desc{
+        text-align: center;
+    }
+
+    .modal-title{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+    .modal-footer{
+        padding-top: 40px !important;
+        margin-top: 30px;
+        border-top: 1px dashed #707070 !important;
+        @media ($sm-1679){
+            padding-top: 30px !important;
+            margin-top: 20px;
+        }
+        @media ($sm-1441){
+            padding-top: 20px !important;
+            margin-top: 14px;  
+        }
+         
+    }
+    .footer-table{
+        width: 100%;
+        font-feature-settings: 'lnum' 1;
+        td{
+            border: none;
+            color: var(--txtLight);
+        }
+        .val{
+            font-weight: 700;
+            color: var(--txtColor);
+        }
+    }
+}
+
+.modal-logout{ 
+    .modal-content{
+        background-image: url(../img/successmodalBg.svg);
+        background-repeat: no-repeat;
+        background-position: top left;
+    }
+    .success-ico{ 
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img{
+            max-width: 180px;
+            @media ($sm-1679){
+                max-width: 160px;
+            }
+            @media ($sm-1441){
+                max-width: 140px;  
+            }
+            @media ($sm-1199){
+                 max-width: 100px;
+            }
+        }
+    }
+    .modal-title,
+    .modal-desc{
+        text-align: center;
+    }
+
+    .modal-title{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+}

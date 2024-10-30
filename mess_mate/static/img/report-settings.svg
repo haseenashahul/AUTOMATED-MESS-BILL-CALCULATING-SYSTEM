@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37">
+  <g id="Group_60597" data-name="Group 60597" transform="translate(-635 -674)">
+    <circle id="Ellipse_64" data-name="Ellipse 64" cx="18.5" cy="18.5" r="18.5" transform="translate(635 674)" fill="#e8ffdf"/>
+    <g id="vuesax_bold_clipboard-tick" data-name="vuesax/bold/clipboard-tick" transform="translate(472 431)">
+      <g id="clipboard-tick" transform="translate(172 252)">
+        <path id="Vector" d="M4.981,0H1.429A1.426,1.426,0,0,0,0,1.421v.711A1.419,1.419,0,0,0,1.421,3.553h3.56A1.419,1.419,0,0,0,6.4,2.132V1.421A1.415,1.415,0,0,0,4.981,0Z" transform="translate(5.865 1.512)" fill="#34ca00"/>
+        <path id="Vector-2" data-name="Vector" d="M10.544.557A2.19,2.19,0,0,1,8.36,2.742H4.807A2.19,2.19,0,0,1,2.623.557.564.564,0,0,0,1.791.066,3.38,3.38,0,0,0,0,3.052v7.113a3.387,3.387,0,0,0,3.379,3.379h6.41a3.387,3.387,0,0,0,3.379-3.379V3.052A3.38,3.38,0,0,0,11.376.066.564.564,0,0,0,10.544.557ZM9.108,6.536,6.085,9.56a.566.566,0,0,1-.8,0L4.15,8.426a.567.567,0,1,1,.8-.8l.733.733L8.307,5.735a.567.567,0,1,1,.8.8Z" transform="translate(2.487 3.086)" fill="#34ca00"/>
+        <path id="Vector-3" data-name="Vector" d="M0,0H18.141V18.141H0Z" transform="translate(18.141 18.141) rotate(180)" fill="none" opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

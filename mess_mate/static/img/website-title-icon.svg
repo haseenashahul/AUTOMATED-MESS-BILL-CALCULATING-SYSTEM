@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37">
+  <g id="Group_60592" data-name="Group 60592" transform="translate(-635 -398)">
+    <circle id="Ellipse_61" data-name="Ellipse 61" cx="18.5" cy="18.5" r="18.5" transform="translate(635 398)" fill="#e8ffdf"/>
+    <g id="vuesax_bold_keyboard" data-name="vuesax/bold/keyboard" transform="translate(348.406 89)">
+      <g id="keyboard" transform="translate(296 318)">
+        <path id="Vector" d="M12.52.076A9.084,9.084,0,0,0,11.178,0H4.358A9.935,9.935,0,0,0,3.039.068C.5.349,0,1.857,0,4.358V8.9c0,2.5.5,4.009,3.016,4.282a9.084,9.084,0,0,0,1.341.076h6.821a9.935,9.935,0,0,0,1.319-.068c2.539-.28,3.039-1.781,3.039-4.289V4.358C15.536,1.857,15.036.349,12.52.076ZM7.768,9.852H3.994a.579.579,0,0,1-.576-.568.566.566,0,0,1,.561-.568H7.768a.568.568,0,1,1,0,1.137Zm3.789-4.168H3.6a.568.568,0,0,1,0-1.137h7.957a.568.568,0,1,1,0,1.137Z" transform="translate(1.326 2.463)" fill="#34ca00"/>
+        <path id="Vector-2" data-name="Vector" d="M0,0H18.189V18.189H0Z" transform="translate(18.189 18.189) rotate(180)" fill="none" opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

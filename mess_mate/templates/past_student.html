@@ -1,0 +1,307 @@
+
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block table %}
+<div class="db-rt-outer">
+    <div class="db-rt-cont-area">
+        <div class="top-panel-wrp">
+            <div class="title">VACATED STUDENTS</div>
+            {% comment %} <div class="rt-cta-wrp">
+                <button class="actn-btns btn">
+                    <img src="img/search-icon-top.svg" alt="">
+                </button>
+                <button class="actn-btns btn">
+                    <img src="img/calendar-icon-top.svg" alt="">
+                </button>
+                <button class="radius-long btn" type="button" data-bs-toggle="modal" data-bs-target="#addWebsite">
+                    <span class="icon"><img src="img/btn-plus-icon.svg" alt=""></span>
+                    <span class="txt">Add Website</span>
+                </button>
+            </div> {% endcomment %}
+        </div>
+        <div class="common-table-wrp">
+            <div class="table-responsive">
+                {% if users %}
+                <table class="table common-table-listing">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="client">REGISTER NO</th>
+                            <th scope="col" class="title">NAME</th>
+                            <th scope="col" class="link">COURSE</th>
+                            <th scope="col" class="phone">PHONE NUMBER</th>
+                            <th scope="col" class="mail">EMAIL ID</th>
+                            <th scope="col" class="date">ADDED DATE</th>
+                            <th scope="col" class="action">ACTION</th>
+                          </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{user.reg_no}}</td>
+                            <td>{{user.first_name|upper}} {{user.last_name|upper}}</td>
+                            <td style="white-space: nowrap;overflow: hidden;">{{user.get_course_display}}</td>
+                            <td>{{user.ph_no}}</td>
+                            <td> {{user.email}}</td>
+                            <td>{{ user.date_joined|date:"Y-m-d H:i:s" }}</td>
+                            <td>
+                                <div class="action-btns-blk">
+                                    <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#viewuser{{user.id}}'>
+                                        <img src="{% static 'img/eye.svg' %}" alt="">
+                                    </a>
+                                    {% comment %} <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#accept{{user.id}}'>
+                                        <img src="{% static 'img/accept.png' %}" alt="">
+                                    </a>
+                                    <a  class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#reject{{user.id}}'>
+                                        <img src="{% static 'img/decline.png' %}" alt="">
+                                    </a> {% endcomment %}
+                                </div>
+                            </td>
+
+
+
+                            <div class="modal modal-small-width fade" id="viewuser{{user.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="staticBackdropLabel">STUDENT DETAILS</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img src="{% static 'img/modal-close.svg' %}" alt=""></button>
+                                    </div>
+                                    <div class="modal-body modal-form">
+                                      <form action="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    {% comment %} <div class="icon-blk">
+                                                        <img src="{% static 'img/website-title-icon.svg' %}" alt="">
+                                                    </div> {% endcomment %}
+                                                    <div class="dtls">
+                                                        <div class="title">NAME</div>
+                                                        <div class="desc">{{user.first_name|upper}} {{user.last_name|upper}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/client-name.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">DOB</div>
+                                                        <div class="desc">{{ user.dob|date:"Y-m-d " }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/email-id.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">GENDER</div>
+                                                        <div class="desc">{{user.get_gender_display}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/phone-number.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">ADDREESS</div>
+                                                        <div class="desc">{{user.address}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/website-link.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">REGISTER NO</div>
+                                                        <div class="desc">{{user.reg_no}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/website-link.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">COURSE</div>
+                                                        <div class="desc">{{user.get_course_display}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/website-link.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">SEMESTER</div>
+                                                        <div class="desc">{{user.sem}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <div class="col-md-6">
+                                            <div class="view-blk">
+                                                <div class="icon-blk">
+                                                    <img src="img/website-link.svg" alt="">
+                                                </div>
+                                                <div class="dtls">
+                                                    <div class="title">CLASS DURATION</div>
+                                                    <div class="desc">{{user.start_year}}-{{user.end_year}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                        <div class="row">
+                                            
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/website-link.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">E-MAIL</div>
+                                                        <div class="desc">{{user.email}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    {% comment %} <div class="icon-blk">
+                                                        <img src="img/phone-number.svg" alt="">
+                                                    </div> {% endcomment %}
+                                                    <div class="dtls">
+                                                        <div class="title">MOBILE NUMBER</div>
+                                                        <div class="desc">{{user.ph_no}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    <div class="icon-blk">
+                                                        <img src="img/email-id.svg" alt="">
+                                                    </div>
+                                                    <div class="dtls">
+                                                        <div class="title">GUARDIAN NAME</div>
+                                                        <div class="desc">{{user.guard_name|upper}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="view-blk">
+                                                    {% comment %} <div class="icon-blk">
+                                                        <img src="{% static 'img/phone-number.svg' %}" alt="">
+                                                    </div> {% endcomment %}
+                                                    <div class="dtls">
+                                                        <div class="title">GUARDIAN MOBILE NUMBER</div>
+                                                        <div class="desc">{{user.guard_phn}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+                        
+
+                                {% comment %} <div class="modal fade" id="accept{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Accept Student</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          Do you want to approve {{user.first_name}}?
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          <a type="button" href="{% url 'accept_user' user.id %}" class="btn btn-success">Accept</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                        
+
+                                  <div class="modal fade" id="reject{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">></button>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Do you want to Reject {{user.first_name}}?
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal"data-bs-dismiss="modal">Close</button>
+                                          <a type="button" href="{% url 'reject_user' user.id %}" class="btn btn-danger">Reject</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div> {% endcomment %}
+                        
+                        
+                            </tr>
+
+                      
+                      {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <div class="text-center">NO DATA FOUND</div>
+                {% endif %}
+            </div>
+        </div>
+        {% comment %} <div class="pagination-wrp">
+            <div class="sort">
+                Show
+                <select class="page-sort form-select" name="" id="">
+                    <option value="">10</option>
+                    <option value="">50</option>
+                    <option value="">100</option>
+                </select>
+                Entries
+            </div>
+            <div class="page-navigate">
+                <a href="#" class="arrow-nav prev"><img src="img/pagination-arrow.svg" alt=""></a>
+                <a href="#" class="counts active">1</a>
+                <a href="#" class="counts">2</a>
+                <a href="#" class="counts">3</a>
+                <a href="#" class="counts">4</a>
+                <a href="#" class="counts">5</a>
+                <a href="#" class="arrow-nav next"><img src="img/pagination-arrow.svg" alt=""></a>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+

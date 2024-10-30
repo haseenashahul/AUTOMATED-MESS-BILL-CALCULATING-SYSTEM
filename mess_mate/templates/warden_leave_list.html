@@ -1,0 +1,153 @@
+
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block table %}
+<div class="db-rt-outer">
+    <div class="db-rt-cont-area">
+        <div class="top-panel-wrp">
+            <div class="title">STUDENT LEAVE</div>
+            <div class="rt-cta-wrp">
+                {% comment %} <button class="actn-btns btn">
+                    <img src="img/search-icon-top.svg" alt="">
+                </button>
+                <button class="actn-btns btn">
+                    <img src="img/calendar-icon-top.svg" alt="">
+                </button> {% endcomment %}
+                {% comment %} <button class="radius-long btn" type="button" data-bs-toggle="modal" data-bs-target="#AddLeave">
+                    <span class="icon"><img src="img/btn-plus-icon.svg" alt=""></span>
+                    <span class="txt">Add Leave</span>
+                </button> {% endcomment %}
+            </div>
+        </div>
+        <div class="common-table-wrp">
+            <div class="table-responsive">
+                <table class="table common-table-listing">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="client">REG NO</th>
+                            <th scope="col" class="client">NAME</th>
+                            <th scope="col" class="client">APPLIED DATE</th>
+                            <th scope="col" class="title">PURPOSE</th>
+                            <th scope="col" class="link">DESCRIPTION</th>
+                            <th scope="col" class="phone">STATUS</th>
+                            <th scope="col" class="mail">START_DATE</th>
+                            <th scope="col" class="date">END_DATE</th>
+                             <th scope="col" class="action">ACTION</th> 
+                          </tr>
+                    </thead>
+                    <tbody>
+                        {% for leave in leaves %}
+                        <tr>
+                            <td>{{leave.user.reg_no}}</td>
+                            <td>{{leave.user.first_name|upper}} {{leave.user.last_name|upper}}</td>
+                            <td>{{leave.applied_date|date:"Y-m-d "}}</td>
+                            <td>{{leave.purpose}}</td>
+                            <td>{{leave.description}}</td>
+                            <td>{{ leave.status }}</td>
+                            <td>{{leave.start_date}}</td>
+                            <td> {{leave.end_date}}</td>
+                            
+                           <td>
+                                <div class="action-btns-blk">
+                                    {% comment %} <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#viewuser{{user.id}}'>
+                                        <img src="{% static 'img/eye.svg' %}" alt="">
+                                    </a> {% endcomment %}
+                                    <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#accept{{leave.id}}'>
+                                        <img src="{% static 'img/accept.png' %}" alt="">
+                                    </a>
+                                    <a  class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#reject{{leave.id}}'>
+                                        <img src="{% static 'img/decline.png' %}" alt="">
+                                    </a>
+                                </div>
+                            </td> 
+
+
+
+                            
+                            <div class="modal fade" id="accept{{leave.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Accept Student Leave</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      Do you want to approve {{laeve.id}}?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <a type="button" href="{% url 'accept_leave' leave.id %}" class="btn btn-success">Accept</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                    
+
+                              <div class="modal fade" id="reject{{leave.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Reject Student Leave</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">></button>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Do you want to Reject {{leave.id}}?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal"data-bs-dismiss="modal">Close</button>
+                                      <a type="button" href="{% url 'reject_leave' leave.id %}" class="btn btn-danger">Reject</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                    
+
+                        </tr>
+
+                      
+                      {% endfor %}
+                    </tbody>
+                </table>
+
+                
+               
+                
+            
+
+                   
+            
+            
+               
+            </div>
+        </div>
+        <div class="pagination-wrp">
+            <div class="sort">
+                Show
+                <select class="page-sort form-select" name="" id="">
+                    <option value="">10</option>
+                    <option value="">50</option>
+                    <option value="">100</option>
+                </select>
+                Entries
+            </div>
+            <div class="page-navigate">
+                <a href="#" class="arrow-nav prev"><img src="img/pagination-arrow.svg" alt=""></a>
+                <a href="#" class="counts active">1</a>
+                <a href="#" class="counts">2</a>
+                <a href="#" class="counts">3</a>
+                <a href="#" class="counts">4</a>
+                <a href="#" class="counts">5</a>
+                <a href="#" class="arrow-nav next"><img src="img/pagination-arrow.svg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+

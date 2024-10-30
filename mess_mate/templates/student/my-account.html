@@ -1,0 +1,216 @@
+
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block table %}
+
+    
+    
+        
+        <div class="db-rt-outer">
+            <div class="db-rt-cont-area account-wrp">
+                <div class="account-action-top">
+                    <div class="profile-info-acc">
+                        {% comment %} <div class="prof-img-wrp">
+                            <img src="img/my-acc-usr-img.png" alt="User Image" class="prof-img">
+                        </div> {% endcomment %}
+                        <div class="prf-dtl">
+                            <span class="prof-name">{{profile.first_name|upper}} {{profile.last_name|upper}}</span>
+                            <h5 class="prof-desg">{{profile.email}}</h5>
+                        </div>
+                    </div>
+                    <div class="action-btn-blks">
+                        <a class="prof-btns">
+                            <span class="icon">
+                                <img src="{% static 'img/reset-password.svg' %}" alt="">
+                            </span>
+                            <span class="txt">Reset Password</span>
+                        </a>
+                        <a class="prof-btns" type="button" data-bs-toggle="modal" data-bs-target="#editProfile">
+                            <span class="icon">
+                                <img src="{% static 'img/edit-profile.svg' %}" alt="">
+                            </span>
+                            <span class="txt">Edit Profile</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="account-action-top">
+                    <div class="col-lg-6 lft">
+                        <div class="left-col">
+                            <div class="title-main">Personal Details</div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">First name:</div>
+                                            <div class="desc">{{profile.first_name|upper}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">Last name:</div>
+                                            <div class="desc"> {{profile.last_name|upper}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">Email ID:</div>
+                                            <div class="desc"><a class="link" href="mailto:">{{profile.email}}</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">Mobile number </div>
+                                            <div class="desc"><a class="link" href="tel:+1 (412) 645-3682">{{profile.ph_no}}</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">Course</div>
+                                            <div class="desc"><a class="link" href="tel:+1 (412) 645-3682">{{profile.course}}</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">Semester</div>
+                                            <div class="desc"><a class="link" href="tel:+1 (412) 645-3682">{{profile.sem}}</a></div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">Address</div>
+                                            <div class="desc"><b>{{profile.address|upper}}</b></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="view-blk">
+                                        <div class="dtls">
+                                            <div class="label-acc">Guardian Name</div>
+                                            <div class="desc"><b>{{profile.guard_name|upper}}</b></a></div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    {% comment %} <div class="col-lg-6 rt">
+                        <div class="plan-info-blk">
+                            <div class="plan-badge">
+                                <img src="img/plan-badge.svg" alt="plan badge">
+                            </div>
+                            <div class="subscribe-sec">
+                                <div class="plan-status-blk">
+                                    <div class="plan-status active">Active</div>
+                                </div>
+                                <div class="plan-info">
+                                    <div class="blks">
+                                        <div class="label">Plan</div>
+                                        <div class="cat">SEO Backlink Service</div>
+                                    </div>
+                                </div>
+                                <div class="plan-info">
+                                    <div class="blks">
+                                        <div class="label">Plan purchase</div>
+                                        <div class="cat">18 June 2024</div>
+                                    </div>
+                                    <div class="blks ms-auto">
+                                        <div class="label">Plan expiry</div>
+                                        <div class="cat">18 August 2024</div>
+                                    </div>
+                                </div>
+                                <a class="subscription-btn">Cancel Subscription</a>
+                            </div>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Modal edit profile-->
+<div class="modal modal-small-width account-edit fade" id="editProfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileLabel">Edit My Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img src="{% static 'img/modal-close.svg' %}" alt=""></button>
+            </div>
+            <div class="modal-body modal-form">
+                <form action="{% url 'edit_profile' %}" method="POST"> <!-- Update the action to your edit profile URL -->
+                    {% csrf_token %} <!-- Include CSRF token for security -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" name="first_name" value="{{ profile.first_name }}" placeholder="Enter First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" name="last_name" value="{{ profile.last_name }}" placeholder="Enter Last Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email ID</label>
+                                <input type="email" class="form-control" name="email" value="{{ profile.email }}" disabled> <!-- Email field is disabled -->
+                            </div>
+                            <div class="form-group">
+                                <label for="ph_no" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" name="ph_no" value="{{ profile.ph_no }}" placeholder="+91 1234567890" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="guard_name" class="form-label">Guardian Name</label>
+                                <input type="text" class="form-control" name="guard_name" value="{{ profile.guard_name }}" placeholder="Enter Guardian Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" name="address" value="{{ profile.address }}" placeholder="Enter Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guard_phn" class="form-label">Guardian Phone Number</label>
+                                <input type="tel" class="form-control" name="guard_phn" value="{{ profile.guard_phn }}" placeholder="+91 1234567890" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="guard_phn" class="form-label">Semester</label>
+                                <input type="number" class="form-control" name="sem"  min="1" max="8" value="{{ profile.sem }}" required >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

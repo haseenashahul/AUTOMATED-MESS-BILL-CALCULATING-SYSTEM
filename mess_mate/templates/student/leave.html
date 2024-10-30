@@ -1,0 +1,155 @@
+
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block table %}
+<div class="db-rt-outer">
+    <div class="db-rt-cont-area">
+        <div class="top-panel-wrp">
+            <div class="title">STUDENT LEAVE</div>
+            <div class="rt-cta-wrp">
+                {% comment %} <button class="actn-btns btn">
+                    <img src="img/search-icon-top.svg" alt="">
+                </button>
+                <button class="actn-btns btn">
+                    <img src="img/calendar-icon-top.svg" alt="">
+                </button> {% endcomment %}
+                <button class="radius-long btn" type="button" data-bs-toggle="modal" data-bs-target="#AddLeave">
+                    <span class="icon"><img src="img/btn-plus-icon.svg" alt=""></span>
+                    <span class="txt">Add Leave</span>
+                </button>
+            </div>
+        </div>
+        <div class="common-table-wrp">
+            <div class="table-responsive">
+                <table class="table common-table-listing">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="client">APPLIED DATE</th>
+                            <th scope="col" class="title">PURPOSE</th>
+                            <th scope="col" class="link">DESCRIPTION</th>
+                            <th scope="col" class="phone">STATUS</th>
+                            <th scope="col" class="mail">START_DATE</th>
+                            <th scope="col" class="date">END_DATE</th>
+                            {% comment %} <th scope="col" class="action">Action</th> {% endcomment %}
+                          </tr>
+                    </thead>
+                    <tbody>
+                        {% for leave in leaves %}
+                        <tr>
+                            <td>{{leave.applied_date|date:"Y-m-d "}}</td>
+                            <td>{{leave.purpose}}</td>
+                            <td>{{leave.description}}</td>
+                            <td>{{ leave.status }}</td>
+                            <td>{{leave.start_date}}</td>
+                            <td> {{leave.end_date}}</td>
+                            
+                            {% comment %} <td>
+                                <div class="action-btns-blk">
+                                    <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#viewuser{{user.id}}'>
+                                        <img src="{% static 'img/eye.svg' %}" alt="">
+                                    </a>
+                                    <a href="" class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#accept{{user.id}}'>
+                                        <img src="{% static 'img/accept.png' %}" alt="">
+                                    </a>
+                                    <a  class="actn-btn-eclipse" data-bs-toggle="modal" data-bs-target='#reject{{user.id}}'>
+                                        <img src="{% static 'img/decline.png' %}" alt="">
+                                    </a>
+                                </div>
+                            </td> {% endcomment %}
+
+
+                        </tr>
+
+                      
+                      {% endfor %}
+                    </tbody>
+                </table>
+
+                
+                <div class="modal modal-small-width fade" id="AddLeave" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddLeaveLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="AddLeaveLabel">Apply for Leave</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <img src="{% static 'img/modal-close.svg' %}" alt="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body modal-form">
+                                <form method="POST" action="{% url 'leave_applications' %}">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="purpose" class="form-label">Leave Purpose</label>
+                                                <input type="text" class="form-control" id="purpose" name="purpose" placeholder="Enter leave purpose" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="start_date" class="form-label">Start Date</label>
+                                                <input type="date" class="form-control" id="start_date" name="start_date" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="end_date" class="form-label">End Date</label>
+                                                <input type="date" class="form-control" id="end_date" name="end_date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="description" class="form-label">Leave Description</label>
+                                                <textarea class="form-control" id="description" name="description" placeholder="Enter leave description" rows="3" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Submit Leave</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+
+                   
+            
+            
+               
+            </div>
+        </div>
+        {% comment %} <div class="pagination-wrp">
+            <div class="sort">
+                Show
+                <select class="page-sort form-select" name="" id="">
+                    <option value="">10</option>
+                    <option value="">50</option>
+                    <option value="">100</option>
+                </select>
+                Entries
+            </div>
+            <div class="page-navigate">
+                <a href="#" class="arrow-nav prev"><img src="img/pagination-arrow.svg" alt=""></a>
+                <a href="#" class="counts active">1</a>
+                <a href="#" class="counts">2</a>
+                <a href="#" class="counts">3</a>
+                <a href="#" class="counts">4</a>
+                <a href="#" class="counts">5</a>
+                <a href="#" class="arrow-nav next"><img src="img/pagination-arrow.svg" alt=""></a>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+

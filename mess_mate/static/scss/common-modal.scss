@@ -1,0 +1,297 @@
+@import "partials/partials";
+
+.modal-small-width{
+    .modal-dialog{
+        max-width: 755px;
+        .modal-content{
+            border-radius: 32px;
+            @media ($sm-1679){
+                border-radius: 28px;
+            }
+            @media ($sm-1441){
+                border-radius: 22px;
+            }
+            
+            .modal-header{
+                padding: 43px 52px 0;
+                border-bottom: none;
+                @media ($sm-1679){
+                    padding: 36px 48px 0;
+                }
+                @media ($sm-1441){
+                    padding: 30px 42px 0;
+                }
+                @media ($sm-1199){
+                    padding: 20px 30px 0;   
+                }
+                @media ($sm-767){
+                    padding: 20px 20px 0;   
+                }
+                .modal-title{
+                    font-size: 18px;
+                    line-height: 21px;
+                    font-family:$font-primary;
+                    font-weight: 700;
+                    @media ($sm-1679){
+                        font-size: 16px;
+                        line-height: 1.167;
+                    }
+                    @media ($sm-1441){
+                        font-size: 14px;
+                    }
+                    @media ($sm-1199){
+                        font-size: 13px;
+                    }
+                }
+                .btn-close{
+                    background: none !important;
+                    padding: 0px !important;
+                    width: 43px !important;
+                    height: 43px !important;
+                    position: absolute;
+                    top: 35px;
+                    right: 30px;
+                    box-shadow: none;
+                    outline: none;
+                    border: none;
+                    z-index: 3;
+                    @media ($sm-1679){
+                        top: 28px;
+                        right: 26px;
+                    }
+                    @media ($sm-1441){
+                        top: 22px;
+                        right: 24px;
+                    }
+                    @media ($sm-1199){
+                        top: 18px;
+                        right: 18px;
+                    }
+                    img{
+                        max-width: 100%;
+                    }
+                    @media ($sm-1679){
+                        width: 35px !important; 
+                        height: 35px !important;
+                    }
+                }
+            }
+            .modal-body{
+                padding: 43px 52px 10px;
+                @media ($sm-1679){
+                    padding: 36px 48px 10px;
+                }
+                @media ($sm-1441){
+                    padding: 30px 42px 10px;
+                }
+                @media ($sm-1199){
+                    padding: 20px 30px 10px;   
+                }
+                @media ($sm-767){
+                    padding: 20px 20px 10px;   
+                }
+                &.modal-form{
+                    .form-label{
+                        color: var(--formLabelColor);
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin-bottom: 8px;
+                        @media ($sm-1679){
+                            margin-bottom: 4px;
+                            font-size: 13px;
+                        }
+                        @media ($sm-1441){
+                            margin-bottom: 2px;
+                            font-size: 12px;
+                        }
+                        @media ($sm-1199){
+                            margin-bottom: 0; 
+                        } 
+                    }
+                    .form-control{
+                        font-weight: 600;
+                        color: var(--txtColor);
+                    }
+                    .form-group{
+                        margin-bottom: 30px; 
+                        position: relative;
+                        @media ($sm-1679){
+                            margin-bottom: 26px; 
+                        }
+                        @media ($sm-1441){
+                            margin-bottom: 20px; 
+                        }
+                        @media ($sm-1199){
+                            margin-bottom: 18px; 
+                        }
+                    }
+                    .inner-title{
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: var(--txtColor);
+                        margin-bottom: 13px;
+                    }
+                    .report-wrp{
+                        display: flex;
+                        .custom-chk{
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: var(--formLabelColor);
+                            margin-right: 20px;
+                            .chk{
+                                border-radius: 19px;
+                                width: 19px;
+                                height: 19px;
+                                flex-shrink: 0;
+                            }
+                            &.frequency{
+                                .radio{
+                                    border-radius: 24px;
+                                    width: 24px;
+                                    height: 24px;
+                                    flex-shrink: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .view-blk{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin: 27px 0;
+                    .icon-blk{
+                        margin-right: 10px;
+                        img{
+                            max-width: 37px;
+                        }
+                    }
+                    .dtls{
+                        display: flex;
+                        flex-direction: column;
+                        .title{
+                            color: var(--formLabelColor);
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 1;
+                            margin-bottom: 5px;
+                        }
+                        .desc{
+                            color: var(--txtColor);
+                            font-weight: 700;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            .modal-footer{
+                padding: 0 52px 40px;
+                @media ($sm-1679){
+                    padding: 0 48px 36px;
+                }
+                @media ($sm-1441){
+                    padding: 0 42px 30px;
+                }
+                @media ($sm-1199){
+                    padding: 0 30px 20px;   
+                }
+                @media ($sm-767){
+                    padding: 0 20px 20px;   
+                }
+                border-top: none;
+                .btn{
+                    border-radius: 30px;
+                    background-color: var(--colorSecondary);
+                    color: var(--btnSecColor);
+                    max-width: 161px;
+                    width: 100%;
+                    border: none;
+                    &:hover{
+                        background-color: var(--colorPrHover);
+                        color: var(--txtWhite);
+                    }
+                    &.btn-primary{
+                        background-color: var(--colorPrimary);
+                        color: var(--txtWhite);
+                    }
+                    &.btn-secondary{
+                        margin-right: 6px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.modal-micro{
+        .modal-dialog{
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            @media ($sm-1679){
+                max-width: 440px;
+            }
+            @media ($sm-1441){
+                max-width: 400px;
+            }
+             
+            .modal-content{
+                .modal-footer{
+                    justify-content: center;
+                    .btn{
+                        flex: 1;
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+
+        &.modal-activatn{
+            .modal-dialog{
+                max-width: 606px;
+                .modal-content{
+                    .modal-footer{
+                        justify-content: flex-end;
+                        .btn{
+                            flex: 1;
+                            max-width: 33%;
+                        }
+                    }
+                }
+            }
+         
+        }
+        &.userlisting{
+            .modal-dialog{
+                max-width: 755px;
+                .modal-content{
+                    .modal-footer{
+                       
+                        .btn{
+                            flex: 1;
+                            max-width: 23%;
+                        }
+                    }
+                }
+               .bottom-val{
+                @media($sm-767){
+                    margin-bottom: 30px;
+                }
+                
+               }
+            }
+        }
+     
+        
+    }
+    &.account-edit{
+        .modal-dialog{
+        max-width: 890px;
+        }
+    }
+}
+
+
+
+.modal-backdrop {
+    background: #26491980 0% 0% no-repeat padding-box;
+}

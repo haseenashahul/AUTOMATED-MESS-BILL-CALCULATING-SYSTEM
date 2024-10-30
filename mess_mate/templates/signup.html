@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if messages %}
+<div class="mt-3">
+            {% for message in messages %}
+            {% if message.tags %}
+                {% if "success" in message.tags %}
+                    <div class="alert alert-success"> {{ message }} </div>
+                {% elif "error" in message.tags %}
+                    <div class="alert alert-danger"> {{ message }} </div> 
+                {% else %}
+                    <div class="alert alert-info"> {{ message }} </div>
+                {% endif %}
+            {% else %}
+                <div class="alert alert-info"> {{ message }} </div>
+            {% endif %}
+        {% endfor %}
+
+</div>
+{% endif %}
+    <style>
+        body {
+            background-color: white;
+        }
+        .signup-card {
+            background-color:#ebfce5;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control, .form-select, .form-textarea {
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        .form-control:focus{
+            border-color: #ACFC90; 
+            box-shadow: 0 0 5px #ACFC90;
+           }
+        .btn-submit {
+            width: 150px; /* Adjusted width */
+            margin: 0 auto; /* Center aligned */
+            display: block;
+            background-color: #34ca00;
+            color: white;
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="signup-card">
+                    <h2 class="text-center mb-4">SIGNUP</h2>
+                    <form method="post">
+                         {% csrf_token %}
+                         {{ form.non_field_errors }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" name="first_name" class="form-control" id="firstName" placeholder="Enter first name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" name="last_name" class="form-control" id="lastName" placeholder="Enter last name" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="dob" class="form-label">Date of Birth</label>
+                                <!-- <input type="date" class="form-control" id="dob" required> -->
+                                 {{form.dob}}
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <!-- <select class="form-select" id="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="other">Other</option>
+                                </select> -->
+                                {{form.gender}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="address" class="form-label">Address</label>
+                                <textarea name="address" class="form-control" id="address" rows="3" placeholder="Enter address" required></textarea>
+                            </div>
+                        </div>
+
+                    <div class="row">
+                        <div class="col-md-">
+                            <label for="course" class="form-label">Course</label>
+                            <!-- <select class="form-select" id="course" required>
+                                <option value="">Select course</option>
+                                <option value="B.Tech(CSE)">B.Tech (Computer Science Engineering)</option>
+                                <option value="B.Tech(ECE)">B.Tech (Electronics & Communication Engineering)</option>
+                                <option value="B.Tech(EEE)">B.Tech (Electrical & Electronics Engineering)</option>
+                                <option value="Diploma(CHE)">Diploma in Computer Hardware Engineering</option>
+                                <option value="Diploma(EE)">Diploma in Electronics Engineering</option>
+                                <option value="Diploma(EEE)">Diploma in Electrical & Electronics Engineering</option>
+                                <option value="MCA">MCA (2 years)</option>
+                            </select> -->
+                            {{form.course}}
+                        </div>
+                    </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="regNo" class="form-label">Register Number</label>
+                                <input type="text" name="reg_no" class="form-control" id="regNo" placeholder="Enter register number" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="semester" class="form-label">Semester</label>
+                                <input type="number" name="sem" class="form-control" id="semester" placeholder="Enter semester" required>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <label for="startYear" class="form-label">Class Starting Year</label>
+                                <input type="number" name="start_year" class="form-control" id="startYear" placeholder="YYYY" min="2000" max="2099" required>
+                            </div>
+                        
+
+                            <div class="col-md-6">
+                                <label for="endYear" class="form-label">Class Ending Year</label>
+                                <input type="number" name="end_year" class="form-control" id="endYear" placeholder="YYYY" min="2000" max="2099" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="mobileNo" class="form-label">Mobile Number</label>
+                                <input type="tel" name="ph_no" class="form-control" id="mobileNo" placeholder="Enter mobile number" pattern="\d{10}" title="Please enter a valid 10-digit phone number." required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="guardianName" class="form-label">Guardian Name</label>
+                                <input type="text" name="guard_name" class="form-control" id="guardianName" placeholder="Enter guardian name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="guardianMobile" class="form-label">Guardian Mobile Number</label>
+                                <input type="tel"  name="guard_phn" class="form-control" id="guardianMobile" placeholder="Enter guardian's mobile number" pattern="\d{10}" title="Please enter a valid 10-digit phone number." required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password1" class="form-control" id="password" placeholder="Enter password" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="password" class="form-label">Confirm Password</label>
+                                <input type="password" name="password2" class="form-control" id="password" placeholder="Confirm password" required>
+                            </div>
+                        </div>
+
+                        
+
+                        <button type="submit" class="btn  btn-submit mt-3">Submit</button>
+                        <div class="text-center mt-4 login-link">
+                         Have an account? <a href="{% url 'login' %}">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    {% endblock %}

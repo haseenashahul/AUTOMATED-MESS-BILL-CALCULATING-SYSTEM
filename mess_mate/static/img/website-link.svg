@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37">
+  <g id="Group_60594" data-name="Group 60594" transform="translate(-635 -489)">
+    <circle id="Ellipse_62" data-name="Ellipse 62" cx="18.5" cy="18.5" r="18.5" transform="translate(635 489)" fill="#e8ffdf"/>
+    <g id="vuesax_bold_keyboard-open" data-name="vuesax/bold/keyboard-open" transform="translate(220 116)">
+      <g id="keyboard-open" transform="translate(424 382)">
+        <path id="Vector" d="M0,0H18.051V18.051H0Z" transform="translate(18.051 18.051) rotate(180)" fill="none" opacity="0"/>
+        <path id="Vector-2" data-name="Vector" d="M8.085,1.128H.564A.568.568,0,0,1,0,.564.568.568,0,0,1,.564,0H8.085a.568.568,0,0,1,.564.564A.568.568,0,0,1,8.085,1.128Z" transform="translate(4.701 15.982)" fill="#34ca00"/>
+        <path id="Vector-3" data-name="Vector" d="M12.034,0H3.008A3.008,3.008,0,0,0,0,3.008V9.777a3.008,3.008,0,0,0,3.008,3.008h9.025a3.008,3.008,0,0,0,3.008-3.008V3.008A3.008,3.008,0,0,0,12.034,0ZM6.009,4a.752.752,0,1,1-.745.752A.748.748,0,0,1,6.009,4ZM3.64,4a.752.752,0,1,1-.745.752A.743.743,0,0,1,3.64,4Zm7.837,5.671H3.58a.57.57,0,0,1-.572-.564.562.562,0,0,1,.557-.564h7.92a.564.564,0,1,1-.008,1.128Zm0-4.355H8.709a.564.564,0,1,1,0-1.128h2.768a.564.564,0,1,1,0,1.128Z" transform="translate(1.504 1.504)" fill="#34ca00"/>
+      </g>
+    </g>
+  </g>
+</svg>

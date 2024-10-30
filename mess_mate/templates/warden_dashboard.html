@@ -1,0 +1,113 @@
+
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block header %}
+<div class="main-title">
+    Warden
+</div>
+{% endblock %}
+{% block table %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .counter-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .counter-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .counter-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .counter-card p {
+            font-size: 1rem;
+            margin: 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body style="color: #28a745;">
+
+<div class="container my-5">
+    <div class="row" style="margin-top: 167px;">
+        <div class="col-sm-6 col-lg-3 mb-4">
+            <div class="counter-card">
+                <i class="fas fa-user-graduate fa-3x"></i>
+                <p id="number1" class="number">{{ active_users_count|default:"0" }}</p>
+                <p>Active Students</p>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 mb-4">
+            <div class="counter-card">
+                <i class="fas fa-user-plus fa-3x"></i>
+                <p id="number2" class="number">{{ registered_users_count|default:"0" }}</p>
+                <p>Registered Students</p>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 mb-4">
+            <div class="counter-card">
+                <i class="fas fa-user-times fa-3x"></i>
+                <p id="number3" class="number">{{ past_users_count|default:"0" }}</p>
+                <p>Vacated Students</p>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 mb-4">
+            <div class="counter-card">
+                <i class="fas fa-money-bill-wave fa-3x"></i>
+                <p id="number4" class="number">{{ total_due|default:"0"}}/-</p>
+                <p>Total Dues</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+$.fn.jQuerySimpleCounter = function(options) {
+    var settings = $.extend({
+        start:  0,
+        end:    100,
+        easing: 'swing',
+        duration: 400,
+        complete: ''
+    }, options );
+
+    var thisElement = $(this);
+
+    $({count: settings.start}).animate({count: settings.end}, {
+        duration: settings.duration,
+        easing: settings.easing,
+        step: function() {
+            var mathCount = Math.ceil(this.count);
+            thisElement.text(mathCount);
+        },
+        complete: settings.complete
+    });
+};
+
+$(document).ready(function() {
+    // Get values from the HTML elements rendered by Django
+    var activeUsersCount = parseInt($('#number1').text(), 10);
+    var registeredUsersCount = parseInt($('#number2').text(), 10);
+    var pastUsersCount = parseInt($('#number3').text(), 10);
+
+    // Animate counters using the dynamic values
+    $('#number1').jQuerySimpleCounter({end: activeUsersCount, duration: 3000});
+    $('#number2').jQuerySimpleCounter({end: registeredUsersCount, duration: 3000});
+    $('#number3').jQuerySimpleCounter({end: pastUsersCount, duration: 2000});
+    $('#number4').jQuerySimpleCounter({end: 246, duration: 2500});  // Keeping this static for the DUES count
+});
+</script>
+{% endblock %}
