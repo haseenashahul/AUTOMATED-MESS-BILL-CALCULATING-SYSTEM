@@ -179,14 +179,14 @@ def is_admin(user):
 @user_passes_test(is_admin)
 def accept_leave(request, leave_id):
     leave = get_object_or_404(LeaveApplication, id=leave_id)
-    leave.status = 'Accepted'
+    leave.status = 'approved'
     leave.save()
     return redirect('leave_applications')  # Redirect to leave list or dashboard
 
 @user_passes_test(is_admin)
 def reject_leave(request, leave_id):
     leave = get_object_or_404(LeaveApplication, id=leave_id)
-    leave.status = 'Rejected'
+    leave.status = 'rejected'
     leave.save()
     return redirect('leave_applications')  # 
 
@@ -306,9 +306,28 @@ def hostel_bill_settings(request):
 
 
 
+def generate_bill(request):
+    if request.method == "POST":
+        month = request.POST.get('month')
+        year = request.POST.get('year')
+        
+        # Create a date object for the first day of the selected month
+        selected_month = datetime(year=int(year), month=int(month), day=1)
+        print(selected_month)#print first day of given month  eg:1/12/2024
+        # Call the function to generate and save the bill
+        generate_and_save_bill_for_month(selected_month)
+        
+        # Redirect to a success page or render a success message
+        return redirect('hostel_bill_settings')  # Replace 'some_success_page' with your actual success page URL or name
+
+    # Optionally, render a form again or an error page if it's not a POST request
+    return None  # Replace 'your_template.html' with your actual template
+
+
+
 
 def generate_and_save_bill_for_month(selected_month):
-    first_day = selected_month.replace(day=1)
+    first_day = selected_month.replace(day=1)  #1/12/2024
     last_day = selected_month.replace(day=monthrange(selected_month.year, selected_month.month)[1])
     
     # Get the active students from the custom user model
@@ -346,9 +365,11 @@ def generate_and_save_bill_for_month(selected_month):
         print(f"Bill generated and saved for {student.first_name} for {first_day.strftime('%B %Y')}: {total_bill}")
 
 
+
+
 def calculate_bill(student, year, month):
     # Get the current bill settings
-    total = 0
+    total_bill = 0
     settings = HostelBillSettings.objects.first()
     User = get_user_model()
     # emp_salary = Employee.objects.all()
@@ -384,16 +405,18 @@ def calculate_bill(student, year, month):
     if enrollment_date:
         # Check if enrolled within the billing month
         if enrollment_date.year == year and enrollment_date.month == month:
-            days_in_month = monthrange(year, month)[1]
+            days_in_month = monthrange(year, month)[1] #total no. of days in month eg:30 or 31
             days_present = days_in_month - (enrollment_date.day - 1)  # Days from enrollment to end of month
         else:
             # If enrolled before the billing month, consider all days in the month
             days_present = monthrange(year, month)[1]
     # Calculate total bill
     print(days_present,'dayssssss')
-    fixed_charge =settings.perDay_fixedCharge * (30 if days_present in [30, 31] else days_present)
-    total = rent_per_user + emp_salary_per_user + settings.perDay_fixedCharge * (30 if days_present in [30, 31] else days_present) + settings.electricity + settings.maintenance + settings.broadband 
-    print('total',total)
+    fixed_charge =settings.perDay_fixedCharge * (30 if days_present in [30, 31] else days_present) #take 30days if present day is 30 or 31 else take presented days
+    total=rent_per_user + emp_salary_per_user + fixed_charge
+    total_bill = rent_per_user + emp_salary_per_user + fixed_charge + settings.electricity + settings.maintenance + settings.broadband 
+    print("total=",total)
+    print('grand_total',total_bill)
     # Calculate approved leave days
     approved_leaves = LeaveApplication.objects.filter(
         user=student,
@@ -404,39 +427,28 @@ def calculate_bill(student, year, month):
 
     leave_days = 0
     for leave in approved_leaves:
-        leave_start = max(leave.start_date, date(year, month, 1))
-        leave_end = min(leave.end_date, date(year, month, monthrange(year, month)[1]))
+        leave_start = max(leave.start_date, date(year, month, 1)) #compare leave start_date and first days mess_bill_month eg:max(10-10-2024,1-10-24)
+        leave_end = min(leave.end_date, date(year, month, monthrange(year, month)[1])) #compare leave end date and last day of mess_bill_month eg:min(15-10-24,30-10-24) .output is 15-10-24
         leave_days += (leave_end - leave_start).days + 1
 
     # Calculate leave deductions
     print(leave_days,"laeve days")
     leave_deduction = 0
     if leave_days >= 30:
-        total = rent_per_user  # Example fixed charge, adjust as needed
+        total_bill = rent_per_user  # Example fixed charge, adjust as needed
+        total = rent_per_user
+        electricity=0
+        maintenance =0
+        broadband=0
     elif leave_days > 0:
-        leave_deduction = (leave_days // 5) * (rent_per_user * Decimal(0.2))
+        leave_deduction = ((leave_days // 5) * 2)* settings.perDay_fixedCharge
     print(leave_deduction,"laeve deudfgdf")
-    return total - leave_deduction,rent_per_user+emp_salary_per_user+fixed_charge,electricity,broadband,maintenance
+    total_bill=total_bill-leave_deduction
+    print(total_bill)
+    return total_bill ,total-leave_deduction,electricity,broadband,maintenance
 
 
 
-
-def generate_bill(request):
-    if request.method == "POST":
-        month = request.POST.get('month')
-        year = request.POST.get('year')
-        
-        # Create a date object for the first day of the selected month
-        selected_month = datetime(year=int(year), month=int(month), day=1)
-        print(selected_month)
-        # Call the function to generate and save the bill
-        generate_and_save_bill_for_month(selected_month)
-        
-        # Redirect to a success page or render a success message
-        return redirect('hostel_bill_settings')  # Replace 'some_success_page' with your actual success page URL or name
-
-    # Optionally, render a form again or an error page if it's not a POST request
-    return None  # Replace 'your_template.html' with your actual template
 
 
 #to get total due of all the students it will display in warden dashboard
